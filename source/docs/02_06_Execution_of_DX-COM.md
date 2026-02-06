@@ -12,16 +12,16 @@ Choose the execution method that best fits your workflow and model requirements.
 ## Execution Prerequisites and Constraints
 
 **Calibration Data Requirements**  
-The data used for model calibration must adhere to the following specifications:  
+The data used for model calibration must adhere to the following specifications:
 
-- **Default Data Type**: By default, the Calibration Data must consist of image files (e.g., JPEG, PNG).  
+- **Default Data Type**: By default, the Calibration Data must consist of image files (e.g., JPEG, PNG).
 - **Custom Data**: If the use of non-image data types is required, use the Python API with a custom torch DataLoader.
 
 **Multi-Input Model Support**  
 Multi-input models are now supported through the Python API using torch DataLoader. For command-line execution, only single-input models are supported.
 
 **Non-Deterministic Output Notice**  
-The compiled results may exhibit variation dependent on the underlying system environment, including CPU architecture, OS, and other specific hardware factors.  
+The compiled results may exhibit variation dependent on the underlying system environment, including CPU architecture, OS, and other specific hardware factors.
 
 ---
 
@@ -526,20 +526,23 @@ dx_com.compile(
 
 ### Important Considerations
 
-!!! warning "Input Selection: Config vs DataLoader"  
-     Users must provide **either** a configuration file **or** a DataLoader. These inputs are mutually exclusive.  
-     - **Config:** Recommended for static, file-based compilation workflows.  
-     - **DataLoader:** Required for programmatic data provision and models with multiple inputs.  
-     When constructing a DataLoader for compilation, the **batch_size must be set to 1.**
+!!! warning "Input Selection: Config vs DataLoader"
+    Users must provide **either** a configuration file **or** a DataLoader. These inputs are mutually exclusive.
 
-!!! note "Hardware Acceleration (CUDA)"  
-     To enable GPU-accelerated quantization (quantization_device="cuda"), ensure the following requirements are met:  
-     - **System:** NVIDIA CUDA drivers and toolkit are installed.  
-     - **Framework:** PyTorch is built with CUDA support (torch.cuda.is_available() is True).  
+    - **Config:** Recommended for static, file-based compilation workflows.
+    - **DataLoader:** Required for programmatic data provision and models with multiple inputs.
+    When constructing a DataLoader for compilation, the **batch_size must be set to 1.**
 
-!!! note "Deprecation Notice: CustomLoader"  
-     The legacy CustomLoader for non-image data is **deprecated.**  
-     - **New Standard:** Use the standard **PyTorch DataLoader** for all data modalities (Image, Tensor, etc.) to ensure long-term compatibility and performance.  
+!!! note "Hardware Acceleration (CUDA)"
+    To enable GPU-accelerated quantization (quantization_device="cuda"), ensure the following requirements are met:
+
+    - **System:** NVIDIA CUDA drivers and toolkit are installed.
+    - **Framework:** PyTorch is built with CUDA support (torch.cuda.is_available() is True).
+
+!!! note "Deprecation Notice: CustomLoader"
+    The legacy CustomLoader for non-image data is **deprecated.**
+
+    - **New Standard:** Use the standard **PyTorch DataLoader** for all data modalities (Image, Tensor, etc.) to ensure long-term compatibility and performance.
 
 ---
 
